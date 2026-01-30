@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Salariés</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body { 
+            background-color: #f8f9fa; 
+            padding-top: 20px; 
+            padding-bottom: 80px; 
+            overflow: hidden; /* Empêche le défilement de toute la page */
+        }
+        
+        .container-fluid { 
+            max-width: 1400px; /* Un peu plus large pour le confort */
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            height: calc(100vh - 120px); /* Fixe la hauteur par rapport à l'écran */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-row {
+            flex: 1;
+            overflow: hidden; /* Important pour que les colonnes gèrent leur propre scroll */
+        }
+
+        /* Colonne de gauche : Fixe */
+        .sidebar { 
+            border-right: 1px solid #dee2e6; 
+            padding-right: 20px;
+            height: 100%;
+        }
+        
+        /* Colonne de droite : Défilante */
+        .scrollable-content {
+            height: 100%;
+            overflow-y: auto; /* Active l'ascenseur uniquement ici */
+            padding-left: 20px;
+        }
+
+        .footer-admin {
+            background-color: #343a40;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 1030;
+        }
+
+        /* Design de la scrollbar pour qu'elle soit plus discrète */
+        .scrollable-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid mx-auto">
+    <h1 class="text-center mb-3">
+        <i class="bi bi-people-fill text-primary me-2"></i>
+        Annuaire des Salariés
+    </h1>
+
+    <% if (message && message.length > 0) { %>
+        <div class="alert alert-<%= levelmessage == 'alert' ? 'danger' : 'success' %> alert-dismissible fade show py-2" role="alert">
+            <%= message %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+
+    <div class="row main-row">
+        <div class="col-lg-4 sidebar">
+            <section class="mb-4">
+                <h3 class="h5"><i class="bi bi-person-plus me-2"></i>Ajouter ou Modifier</h3>
+                <form action="/salarie/ajouter/" method="POST" class="row g-2">
+                    <div class="col-12">
+                        <label class="form-label small">ID</label>
+                        <input type="text" name="newid" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label small">Nom</label>
+                        <input type="text" name="newsalarie" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label small">Prénom</label>
+                        <input type="text" name="newlastname" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small">Salaire</label>
+                        <input type="number" name="newsalary" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small">Niveau</label>
+                        <input type="number" name="newlevel" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="col-12 d-grid gap-2 mt-3">
+                        <input type="submit" name="OP" value="Ajouter" class="btn btn-success btn-sm">
+                        <input type="submit" name="OP" value="Modifier" class="btn btn-warning btn-sm">
+                    </div>
+                </form>
+            </section>
+
+            <hr>
+
+            <section class="mt-3">
+                <h5 class="h6"><i class="bi bi-search me-2"></i>Rechercher</h5>
+                <form action="/salariefiltre" method="POST" class="row g-2">
+                    <div class="col-12">
+                        <input type="text" name="rechsalarie" class="form-control form-control-sm" placeholder="Nom...">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-sm w-100">Filtrer</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <div class="col-lg-8 scrollable-content">
+            <div class="d-flex justify-content-between align-items-center mb-3 sticky-top bg-white pt-2">
+                <h3 class="h5 mb-0">Liste des collaborateurs</h3>
+                <span class="badge bg-secondary">Total : <%= nbsalaries %></span>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark sticky-top">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Salaire</th>
+                            <th>Niveau</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (data && data.length > 0) { %>
+                            <% data.forEach(function(salarie) { %>
+                                <tr>
+                                    <td><%= salarie.id %></td>
+                                    <td><%= salarie.name %></td>
+                                    <td><%= salarie.lastname %></td>
+                                    <td><%= salarie.salary %> €</td>
+                                    <td><span class="badge bg-info"><%= salarie.level %></span></td>
+                                    <td>
+                                        <a href="/salarie/supprimer/<%= salarie.id %>" class="btn btn-sm btn-outline-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <% }); %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="6" class="text-center text-muted">Aucun salarié trouvé.</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-admin fixed-bottom">
+    <div class="container d-flex justify-content-center gap-3">
+        <a href="/datatest" class="btn btn-outline-light">
+            <i class="bi-recycle"></i> 
+        </a>
+        <a href="/deleteall" class="btn btn-outline-light" onclick="return confirm('Vider la liste ?')">
+            <i class="bi bi-trash-fill"></i> 
+        </a>
+        <a href="http://localhost:8086/" target="_blank" class="btn btn-outline-light">
+            <i class="bi bi-file-earmark-text"></i>
+        </a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

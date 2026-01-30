@@ -1,0 +1,21 @@
+{
+  "name": "app-gestion-salaries",
+  "version": "2.0.0",
+  "description": "Interface de gestion des salariés modernisée",
+  "main": "server.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node app.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "morgan": "^1.10.0",
+    "serve-favicon": "^2.5.0"
+  }
+}

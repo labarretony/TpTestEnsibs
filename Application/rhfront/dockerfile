@@ -1,0 +1,16 @@
+FROM node:20-alpine
+
+WORKDIR /usr/src/app
+
+# Installation des dépendances
+COPY package*.json ./
+RUN npm install --quiet
+
+# Copie de tout le code source
+COPY . .
+
+# On expose le port sur lequel votre Front écoute (ex: 8085)
+EXPOSE 8085
+
+# On lance l'app directement
+CMD ["npm", "start"]

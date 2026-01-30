@@ -1,0 +1,18 @@
+# Utilise une version LTS récente (Alpine est très léger)
+FROM node:20-alpine
+
+# Répertoire de travail
+WORKDIR /usr/src/app
+
+# Installation des dépendances (séparée pour optimiser le cache Docker)
+COPY package*.json ./
+RUN npm install --quiet
+
+# Copie TOUT le code source
+COPY . .
+
+# Port exposé
+EXPOSE 8086
+
+# Démarrage
+CMD ["npm", "start"]
