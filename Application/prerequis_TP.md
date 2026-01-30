@@ -9,7 +9,7 @@
 
 5. Créer un répertoire c:/Tptest
 
-6. Se positionner dans le répertoire test et récupérer le code de l'application à mettre sous c:/Tptest:
+6. Se positionner dans le répertoire et lancer depuis gitbash
 
 `git clone https://github.com/labarretony/TpTestEnsibs.git`
 
@@ -20,7 +20,7 @@ Cette application est composée d'un backend disponible dans rhapi et d'un front
 Lancer un nouveau terminal Git bash et se positionner dans le répertoire Tptest
 
 ``` 
-cd /c/Tptest
+cd /c/Tptest/TpTestEnsibs/Application
 docker-compose up --build
 ```
 
