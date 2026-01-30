@@ -36,8 +36,11 @@ L'étudiant devra être en capacité de fournir en séance :
 
 L'étudiant sera évalué sur :
 -Le cours et les TP par un QCM en fin de dernière séance (/10 individuel)
+
 -Les séances (/10 par groupe de TP)
--Un rendu sur le thème (/10 par groupe de TP): L'Intelligence artificielle au service de la qualité du logiciel. Pour cela, par groupe de TP vous évaluerez la pertinence de vos cas de test disponibles dans le référentiel d'exigenences. EN vous appuyant sur des prompt d'IA, vous abonderez vos cas de tests et présenter :
+
+-Un rendu sur le thème (/10 par groupe de TP): L'Intelligence artificielle au service de la qualité du logiciel. 
+Pour cela, par groupe de TP vous évaluerez la pertinence de vos cas de test disponibles dans le référentiel d'exigenences. EN vous appuyant sur des prompt d'IA, vous abonderez vos cas de tests et présenter :
     - la pertinence des cas de test proposé par l'IA
     - les similarités, apports, difficultés
     - les hallucinations relevées
