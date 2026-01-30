@@ -1,11 +1,3 @@
-# rhtest
-
-Les TP concernant le test nécessitent l'application mise sous test appelée RhTest disponible dans les documents ci dessous. Pour faciliter les travaux en séance, vous devrez vous munir de votre ordinateur portable en disposant des droits d'accès administrateur sur celui-ci. Les explications ci dessous sont données à titre indicatif pour une installation sous Windows avec Docker Desktop. L'installation est également possible sous Linux (ubuntu), non décrit dans cet article. 
-
-![Copie d'écran de l'application RhTest](/docs/screenshot.png)
-
-Pour installer cette application, veuillez suivre les indications présentées [ici](docs/prerequis_TP.md)
-
 ## Cours
 Le support de présentation du cours permet de disposer des éléments essentiels et memo, mais ne présente pas tous les exemples donnés en séance. il est disponible [ici](Cours_diapo_2026.pdf)
 
@@ -19,6 +11,17 @@ Pour illustrer les phases thériques vus en cours, les manipulations se font au 
 4. [Construire son test d'Api](TP-TestAPIAutomatise/Readme.md)
 5. [Construire son test de montée en charge](TP-TestCharge/Readme.md)
 
+
+# Application sous test
+
+Les TP concernant le test nécessitent l'application mise sous test appelée RhTest disponible dans les documents ci dessous. Pour faciliter les travaux en séance, vous devrez vous munir de votre ordinateur portable en disposant des droits d'accès administrateur sur celui-ci. Les explications ci dessous sont données à titre indicatif pour une installation sous Windows avec Docker Desktop. L'installation est également possible sous Linux (ubuntu), non décrit dans cet article. 
+
+![Copie d'écran de l'application RhTest](/docs/ApplicationRhtest.jpg)
+
+Pour installer cette application, veuillez suivre les indications présentées [ici](/Application/prerequis_TP.md)
+
+
+## Evaluations
 
 Les travaux sont à réaliser par groupe de  2 à 3 personnes. Il est évident que le travail devra être organisé au sein du groupe pour se répartir les actions. 
 
