@@ -35,6 +35,7 @@ L'étudiant devra être en capacité de fournir en séance :
 5. Les cas de test implémentés dans Selenium et enregistré au format HTML
 
 L'étudiant sera évalué sur :
+
 -Le cours et les TP par un QCM en fin de dernière séance (/10 individuel)
 
 -Les séances (/10 par groupe de TP)
