@@ -10,7 +10,7 @@ Aujourd'hui, nous utiliserons le plugin Katalon Recorder (Selenium tests generat
 ## Livrable
 
 Le livrable de ce TP est un dossier de tests présentant :
-- Les cas de test implémentés dans Selenium Ide et enregistré au format .side
+- Les cas de test implémentés dans Selenium Ide et enregistré au format .zip
 
 
 ## Pré requis
@@ -23,15 +23,15 @@ Le livrable de ce TP est un dossier de tests présentant :
 
  ![Lancer Katalon](/docs/katalon/Katalalon.jpg)
 
-## Présentation de Selenium Ide
+## Présentation de Katalon
 
-Katalon est une extensuib simple et facile d’utilisation qui permet de capturer un scénario utilisateur puis de le rejouer.
+Katalon est une extension simple et facile d’utilisation qui permet de capturer un scénario utilisateur puis de le rejouer.
 Il permet de comprendre rapidement l'intérêt des tests fonctionnels automatisés.
 
 Une fois enregistrés, ces tests peuvent être sauvegardés au format .krecorder par défaut. Des exports sont égalememnt possibles d'autres format dans  permettent de prendre en charge des mlngages Java, PHP, Javascript, etc. Les tests peuvent aussi être joués sur différents navigateurs Chrome, Firefox, ou sur les mobiles. Les tests pourront d'ailleurs être exécuté en mode ligne de commande et inséré sans une CI
 
 
-### Interface Graphique de Selenium Ide
+### Interface Graphique de Katalon
 
 
 Une fois démarré, l'interface Selenium IDE se décompose en plusieurs sections
@@ -94,6 +94,10 @@ En plus des commandes disponibles via l'enregistrement, vous pouvez disposer de 
 https://docs.katalon.com/katalon-recorder/docs/overview.html
 
 
+A noter que sur certain navigateurs, il ne sera pas possible d'insérer des nombres négatifs. Pour cela vous devrez utiliser une commande Runscript
+Exemple pour un nombre de point = -4:
+Command=runScript
+Target= document.querySelector('input[name="newlevel"]').value = '-4'
 
 
 A noter que dans le navigateur vous trouverez également les commandes contextuelles disponibles en sélectionnant un élémnet de votre page, click droit/Katalon recorder puis sélection une assertion.
